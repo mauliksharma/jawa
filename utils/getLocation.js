@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Geolocation from '@react-native-community/geolocation';
 
 const getLocation = () => {
@@ -8,7 +8,10 @@ const getLocation = () => {
     Geolocation.getCurrentPosition(
       (position) => {
         console.log(`Position: ${position}`);
-        setCoordinates([position.coords.latitude, position.coords.longitude])
+        setCoordinates({
+          lat: position.coords.latitude, 
+          lon: position.coords.longitude
+        })
       },
       (error) => {
         console.log(error.code, error.message);
